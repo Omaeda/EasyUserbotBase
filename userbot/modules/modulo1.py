@@ -1,8 +1,5 @@
-from userbot.events import message
-from telethon import functions, types
+from ..events import newMessage
 
-#OUTGOING=TRUE è per i comandi fatti da voi stessi
-
-@message(outgoing=True, pattern='-start')
-async def EasyRespond(e):
-	await e.respond("Ehy, ciao, questa è una risposta")
+@newMessage(outgoing=True, pattern='start', prefix=['/', '.'])
+async def _(event):
+	await event.respond("Ehy, ciao, questa è una risposta")

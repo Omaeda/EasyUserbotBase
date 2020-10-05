@@ -1,15 +1,30 @@
 from telethon import events
-from userbot import bot
+from . import app
+def newMessage(**args):
 
-def message(**args):
     pattern = args.get('pattern', None)
+    prefix = args.get('prefix', [])
+
+    alias = '['
+
+    if len(prefix) > 0:
+        for x in prefix:
+            if x != ']' and x != '[':
+                if x == '/':
+                    alias += f'\{x}'
+                else:
+                    alias += x
+        alias += ']'
+    else:
+        alias = ''
 
     if pattern is not None and not pattern.startswith('(?i)'):
-        args['pattern'] = '(?i)' + pattern
+        args['pattern'] = f'(?i){alias}' + pattern
+
+    del args['prefix']
 
     def decorator(func):
-        bot.add_event_handler(func, events.NewMessage(**args))
-        bot.add_event_handler(func, events.MessageEdited(**args))
+        app.add_event_handler(func, events.NewMessage(**args))
         return func
 
     return decorator
