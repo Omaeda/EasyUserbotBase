@@ -8,13 +8,13 @@ def getModules():
 
 # LOAD CONFIG FROM FILE
 def loadConfig() -> dict:
-    with open('config.json') as file:
+    with open('config.json', encoding='UTF-8') as file:
         data = json.load(file)
     return data
 
 # DUMP CONFIG IN FILE
 def dumpConfig(config: dict) -> bool:
-    with open('config.json', 'w+') as file:
+    with open('config.json', 'w+', encoding='UTF-8') as file:
         json.dump(config, file)
     return True
 
