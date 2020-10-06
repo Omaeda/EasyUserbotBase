@@ -2,6 +2,7 @@ from . import app, LOGS
 
 from telethon import events
 
+# HANDLER 
 def newMessage(**kargs):
 
     # KARGS FOR HANDLER
@@ -10,7 +11,7 @@ def newMessage(**kargs):
     kargs.setdefault('forwards', False)
     kargs.setdefault('outgoing', True)
 
-    # EXTRA ARGS 
+    # EXTRA ARGS
     prefix = kargs.setdefault('prefix', ['.', '/'])
     edited = kargs.setdefault('edited', True)
 

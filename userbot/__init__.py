@@ -12,9 +12,9 @@ try:
     from telethon import TelegramClient
     from telethon.sessions import StringSession
 except ImportError:
-    if sys.platform.startswith('Win'):
+    if sys.platform().startswith('Win'):
         os.system('py -m pip install -r requirements.txt')
-    elif sys.platform.startswith('Lin'):
+    elif sys.platform().startswith('Lin'):
         os.system('python3 -m pip install -r requirements.txt')
     else:
         print('Not supporter OS.')
