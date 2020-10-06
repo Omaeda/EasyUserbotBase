@@ -1,6 +1,15 @@
 # EasyUserbotBase
-Easy-to-use Telethon userbot base for beginners
+Easy-to-use userbot framework for beginners based on Telethon.
 
-Just download telethon with ``` pip install telethon ```
+# Features
+* **Auto Dependencies Installation**
+* **Auto Modules Loader**
+* **Auto Config Setup**
+* **Custom Events**
+* **Colored Logs**
+* **Elegant Code**
 
-Start: ``` py -m userbot ``` or ``` python3 -m userbot ```
+# How To Use
+
+**Windows**: ``` py -m userbot ```  
+**Linux**: ``` python3 -m userbot ```
