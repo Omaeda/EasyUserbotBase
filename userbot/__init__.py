@@ -24,7 +24,7 @@ except ImportError:
 
 colorama.init()
 
-# CREATE CONFIGS
+# Check far configs.json
 if not os.path.exists('config.json'):
 
     api_id = None
@@ -32,14 +32,14 @@ if not os.path.exists('config.json'):
 
     while True:
 
-        # GET API HASH
+        # Getting Api Id
         if api_id is None:
             api_id = input('Insert your api id (get it on my.telegram.org): ')
             if not api_id.isnumeric():
                 print('api id isn\'t valid!')
                 continue
 
-        # GET API HASH
+        # Getting Api Hash
         if api_hash is None:
             api_hash = input('Insert your api hash (get it on my.telegram.org): ')
             if not api_id.isnumeric():
@@ -50,17 +50,17 @@ if not os.path.exists('config.json'):
         if api_hash != None and api_id != None:
             break
 
-    # CREATING SESSION
+    # Creating Client for saving string_session in configs
     with TelegramClient(StringSession(), api_id, api_hash) as client:
         string_session = client.session.save()
 
-    # DUMPING FIRST CONFIG
+    # Dumping first config
     dumpConfig({"telegram": {"api_id": int(api_id), "api_hash": str(api_hash), "string_session": str(string_session)}})
 
-# LOAD CURRENT CONFIG
+# Load currenti configs
 configs = loadConfig()
 
-# CREATE TELEGRAM CLIENT
+# Create Main Client
 app = TelegramClient(
     session = StringSession(configs['telegram']['string_session']),
     api_id = configs['telegram']['api_id'],
@@ -68,17 +68,17 @@ app = TelegramClient(
     request_retries = 3,
 )
 
-# LOGS
+# Creating Logs
 LOGS = logging.getLogger(__name__)
 
-# COLORS
+# Manage Colors
 LEVEL_STYLES = dict(
     info=dict(color='green'),
     warning=dict(color='yellow'),
     error=dict(color='red'),
 )
 
-# INSTALL COLORS IN LOGGER
+# Install colors in Logs
 coloredlogs.install(
     level='INFO',
     fmt=f"{time.strftime('%Y/%m/%d | %H:%M:%S')} | %(levelname)s » %(message)s",

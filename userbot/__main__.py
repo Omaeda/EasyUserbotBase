@@ -2,17 +2,18 @@ from . import LOGS, configs, app
 from .functions import getModules
 from importlib import import_module
 
-# STARTING CLIENT
+# Starting Client
 app.start()
 
-# LOADING MODULES
-LOGS.info(f'Comincio a caricare i moduli...')
+# Starting loading modules
+LOGS.info(f'Loading Modules...')
 
 for module_name in getModules():
 	import_module(f'userbot.modules.{module_name}')
-	LOGS.info(f'[{module_name}] Caricato.')
+	LOGS.info(f'[{module_name}] Loaded.')
 
-LOGS.info('EasyUserBot caricato ed avviato correttamente!')
+# Modules loaded
+LOGS.info('EasyUserBot started correctly!')
 
-# STARTING LOOP
+# Starting Userbot Main Loop
 app.run_until_disconnected()
